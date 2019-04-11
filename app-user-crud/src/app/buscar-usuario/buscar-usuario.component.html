@@ -1,0 +1,130 @@
+<style>
+    input {
+      width: 50%;
+    }
+  </style>
+
+  <div class="row">
+    <div class="col-md-6">
+      <form #formSearchUser="ngForm" (ngSubmit)="buscarUsuario()" >
+          <h1>Buscar Usuario</h1>
+          <label>Introduce el ID del Usuario que deseas buscar</label>
+          <input class="form-control" type="text" name="id" #id="ngModel" [(ngModel)]="id_a_buscar" >
+          <br>
+    
+          <button #btn_buscar type="submit" class="btn btn-warning">Buscar Usuario</button>
+    
+      </form>
+  
+  
+    
+    </div>
+  
+  
+    <div class="col-md-6">
+ 
+  
+<!-- PROBANDO TEMPLATE -->
+    <!-- <ng-template [ngIf]="!editable" [ngIfElse]="formDetailUserEditable"> 
+
+        <h1 *ngIf ="!editable  && !encontrado"> Resultado aqui..</h1>
+        <form #formDetailUser="ngForm"  *ngIf="encontrado" >
+            <h1>Usuario Encontrado</h1>
+            <label>ID: </label>
+            <input class="form-control" type="text" name="_id" #nombre="ngModel" [(ngModel)]="user_aux._id" [disabled]="true" [value]="atiketesale">
+            <br>
+            <label>Nombre: </label>
+            <input class="form-control" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user_aux.nombre" [disabled]="!editable">
+            <br>
+            <label>Apellido 1: </label>
+            <input class="form-control" type="text" name="apel_1" #apel_1="ngModel" [(ngModel)]="user_aux.apel_1"  [disabled]="!editable" >
+            <br>
+            <label>Apellido 2: </label>
+            <input class="form-control" type="text" name="apel_2" #apel_2="ngModel" [(ngModel)]="user_aux.apel_2" [disabled]="!editable" >
+            <br>
+            <label>Email: </label>
+            <input class="form-control" type="email" name="email" #email="ngModel" [(ngModel)]="user_aux.email" [disabled]="!editable" >
+            <br>
+            <label>Fecha Nacimiento: </label>
+            <input class="form-control" type="date" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="user_aux.fecha_nacimiento"  [disabled]="!editable">
+            <br>
+     
+            <div class="form-group" data-toggle="buttons">
+              <button class="btn btn-info"  (click)="activarEdicion(this.formDetailUser)" > Editar</button>
+              <button class="btn btn-success" type="submit" *ngIf="editable" style="margin-left:10px;"  >Actualizar datos</button>
+            </div>
+        </form>
+
+
+    </ng-template>
+
+    <ng-template #formDetailUserEditable>
+  
+        <form #formDetailUserEditable="ngForm"   >
+            <h1>Usuario Encontrado</h1>
+            <label>ID: </label>
+            <input class="form-control" type="text" name="_id" #nombre="ngModel" [(ngModel)]="user._id" [disabled]="true">
+            <br>
+            <label>Nombre: </label>
+            <input class="form-control" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" [disabled]="!editable">
+            <br>
+            <label>Apellido 1: </label>
+            <input class="form-control" type="text" name="apel_1" #apel_1="ngModel" [(ngModel)]="user.apel_1"  [disabled]="!editable" >
+            <br>
+            <label>Apellido 2: </label>
+            <input class="form-control" type="text" name="apel_2" #apel_2="ngModel" [(ngModel)]="user.apel_2" [disabled]="!editable" >
+            <br>
+            <label>Email: </label>
+            <input class="form-control" type="email" name="email" #email="ngModel" [(ngModel)]="user.email" [disabled]="!editable" >
+            <br>
+            <label>Fecha Nacimiento: </label>
+            <input class="form-control" type="date" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="user.fecha_nacimiento"  [disabled]="!editable">
+            <br>
+          
+            <div class="form-group" data-toggle="buttons">
+              <button class="btn btn-info"  (click)="activarEdicion(this.formDetailUser)" > Editar</button>
+              <button class="btn btn-success" type="submit" *ngIf="editable" style="margin-left:10px;"  >Actualizar datos</button>
+            </div>
+        </form>
+    </ng-template>
+
+  -->
+
+  
+    <form #formUpdateUser="ngForm" *ngIf="encontrado" (ngSubmit)="actualizarDatos()">
+      <h1>Usuario Encontrado</h1>
+      <div class="form-group">
+        <label>ID</label>
+        <input type="text"  class="form-control" name="_id" [(ngModel)]="user._id" [disabled]="true" >
+      </div>
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" class="form-control" name="nombre" [(ngModel)]="user.nombre" (change)="editable = true">
+      </div>
+      <div class="form-group">
+        <label>Apellido 1</label>
+        <input type="text" class="form-control" name="apel_1" [(ngModel)]="user.apel_1" (change)="editable = true">
+      </div>
+      <div class="form-group">
+        <label>Apellido 2</label>
+        <input type="text" class="form-control" name="apel_2" [(ngModel)]="user.apel_2" (change)="editable = true">
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="email" [(ngModel)]="user.email" (change)="editable = true">
+      </div>
+      <div class="form-group">
+        <label>Fecha nacimiento <b>(Año/Mes/DiaTHH:MM:SS)</b> </label>
+
+        <input type="datetime" class="form-control" name="fecha_nacimiento"  
+        [(ngModel)]="user.fecha_nacimiento" (change)="editable = true">
+      </div>
+      <div class="form-group">
+        <button *ngIf="editable" type="submit" class="btn btn-info">Actualizar datos</button>
+      </div>
+    </form>
+
+
+    </div>  
+
+  </div>

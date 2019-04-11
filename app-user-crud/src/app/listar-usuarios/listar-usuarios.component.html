@@ -1,0 +1,54 @@
+<div class="col">
+  <h1>Lista Usuarios</h1>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido 1</th>
+        <th>Apellido 2</th>
+        <th>Email</th>
+        <th>Fecha Nacimiento</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <!-- Sample -->
+        <td><b>Ejemplo Estatico</b></td>
+        <td><b>Ernesto</b></td>
+        <td><b>Gil</b></td>
+        <td><b>Clinton</b></td>
+        <td><b>john@example.com</b></td>
+        <td><b>1995/04/23</b></td>
+        <td class="text-center">
+            <div style="display:inline-block">
+                <a class="btn btn-danger disabled" (click)="borrar(usuario._id)">Borrar</a>
+                <a class="btn btn-info disabled" >Actualizar</a>
+             </div>
+        </td>
+      </tr>
+
+        <tr *ngFor="let usuario of usuarios">
+          <td>{{usuario._id}}</td>
+          <td>{{usuario.nombre}}</td>
+          <td>{{usuario.apel_1}}</td>
+          <td>{{usuario.apel_2}}</td>
+          <td>{{usuario.email}}</td>
+          <td>{{usuario.fecha_nacimiento | date: "yyyy/MM/dd" }}</td>
+          <td class="text-center">
+           <div style="display:inline-block">
+              <a class="btn btn-danger" (click)="borrar(usuario._id)">Borrar</a>
+              <a class="btn btn-info"  [routerLink]="['/buscar_usuario']" [queryParams]="{id:usuario._id}" >Actualizar</a>
+           </div>
+          </td>
+        </tr>
+
+
+    </tbody>
+  </table>
+  <!-- <ul *ngFor = "let usuario of usuarios">
+    <li>{{usuario.nombre}}</li>
+  </ul> -->
+</div>

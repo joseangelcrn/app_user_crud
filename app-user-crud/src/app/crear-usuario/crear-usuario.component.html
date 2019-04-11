@@ -1,0 +1,39 @@
+
+
+
+<style>
+
+.form-group input{
+  width: 70%;
+  margin: 0 auto;
+}
+
+</style>
+<div class="col">
+  <h1>Crear Usuario</h1>
+  <br>
+  <form #formularioAddUser ="ngForm"  (ngSubmit)="guardarUsuario()" >
+      <div class="form-group">
+        <label >Nombre:  </label>
+        <input type="text" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="usuario_nuevo.nombre">
+      </div>
+      <div class="form-group">
+        <label >Apellido 1:  </label>
+        <input type="text" class="form-control" name="apel_1" #apel_1="ngModel" [(ngModel)]="usuario_nuevo.apel_1">
+      </div>
+      <div class="form-group">
+        <label >Apellido 2:  </label>
+        <input type="text" class="form-control" name="apel_2" #apel_2="ngModel" [(ngModel)]="usuario_nuevo.apel_2">
+      </div>
+      <div class="form-group">
+        <label >Email  </label>
+        <input type="email" class="form-control" name="email" #email="ngModel" [(ngModel)]="usuario_nuevo.email">
+      </div>
+      <div class="form-group">
+        <label >Fecha Nacimiento:  </label>
+        <input type="date" class="form-control" name="fecha_nacimiento" #fecha_nacimiento="ngModel" [(ngModel)]="usuario_nuevo.fecha_nacimiento">
+      </div>
+      <button type="submit" class="btn btn-success">Guardar Usuario</button>
+    </form>
+  
+  </div>

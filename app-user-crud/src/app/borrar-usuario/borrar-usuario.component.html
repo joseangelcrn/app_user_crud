@@ -1,0 +1,17 @@
+<style>
+  input {
+    width: 25%;
+  }
+</style>
+<div class="col">
+  <form #formDeleteUser="ngForm" (ngSubmit)="borrarUsuario()" >
+      <h1>Borrar Usuario</h1>
+      <label>Introduce el ID del Usuario que deseas borrar</label>
+      <input class="form-control" type="text" name="id" #nombre="ngModel" [(ngModel)]="user._id">
+      <br>
+
+      <button type="submit" class="btn btn-danger">Borrar Usuario</button>
+
+  </form>
+
+</div>
